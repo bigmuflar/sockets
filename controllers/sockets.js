@@ -1,20 +1,21 @@
 
 // SocketIO require
-var io = require('socket.io'),
+var io = require('socket.io');
+
     // this is the twitter node stream module
-    nodeTweetStream = require('node-tweet-stream');
+    // nodeTweetStream = require('node-tweet-stream');
 
 // Twitter API require
 // You will need to create Twitter authentication key, secret, token, etc.
 // I then store those values in my .bashrc so that they are not stored in the public repository.
 // For example:  export TWITTER.CONSUMER.KEY='Aasd878qwekbvDf69a923rbllasdo8'
 // I can refer to those values from the environment and keep my code clean.
-var twitterStream = nodeTweetStream({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    token: process.env.TWITTER_TOKEN,
-    token_secret: process.env.TWITTER_TOKEN_SECRET
-});
+// var twitterStream = nodeTweetStream({
+//         consumer_key: process.env.TWITTER.CONSUMER.KEY,
+//         consumer_secret: process.env.TWITTER.CONSUMER.SECRET,
+//         token: process.env.MY.TWITTER.TOKEN,
+//         token_secret: process.token_SECRET
+// });
 
 module.exports = (app, PORT) => {
     console.log("Loading sockets");
@@ -87,30 +88,30 @@ module.exports = (app, PORT) => {
 
         // TWITTER
         // if the client sends a string to search with, start tracking the twitter stream with that string
-        socket.on('track', (data) => {
-            // note that data is only a string - not an object
-            console.log("Tracking", data);
-            // Set which tweets to track if we have a stream and a string to search on
-            if (twitterStream && data) {
-                twitterStream.track(data);
-            }
-        });        
-        socket.on('untrack', (data) => {
-            // note that data is only a string - not an object
-            console.log("Stop Tracking");
-            // Set which tweets to track if we have a stream and a string to search on
-            if (twitterStream && data) {
-                twitterStream.untrack(data);
-            }
-        });
+        // socket.on('track', (data) => {
+        //     // note that data is only a string - not an object
+        //     console.log("Tracking", data);
+        //     // Set which tweets to track if we have a stream and a string to search on
+        //     if (twitterStream && data) {
+        //         twitterStream.track(data);
+        //     }
+        // });
+        // socket.on('untrack', (data) => {
+        //     // note that data is only a string - not an object
+        //     console.log("Stop Tracking");
+        //     // Set which tweets to track if we have a stream and a string to search on
+        //     if (twitterStream && data) {
+        //         twitterStream.untrack(data);
+        //     }
+        // });
 
 
         // When we receive a tweet, emit that tweet as a socket message
         // This is a special function from the twitter node-tweet-stream node module
-        twitterStream.on('tweet', (tweetData) => {
-            // Emitting a socket event named 'tweet' with data attached
-            socket.emit('tweeter', tweetData); 
-        });
-
+    //     twitterStream.on('tweet', (tweetData) => {
+    //         // Emitting a socket event named 'tweet' with data attached
+    //         socket.emit('tweeter', tweetData);
+    //     });
+    //
     });
 }

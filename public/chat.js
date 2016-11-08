@@ -97,32 +97,32 @@ angular.module('app')
         };
 
         // TWITTER Feed
-        // This is an example of the server streaming data to the client on a socket 
+        // This is an example of the server streaming data to the client on a socket
         // Listening for the 'tweet' socket event emitted by the server
         // if we receive a tweet event, add it to the tweet history
-        socket.on("tweeter", function (data) {
-            console.log("adding tweet", data.text);
-            // add the new tweet to the top of the tweet history
-            chat.tweetHistory.unshift(data.text + '\n');
-            // only display a max of the 25 most recent tweets
-            if (chat.tweetHistory.length > 25) {
-                // remove the 26th tweet from the bottom of the tweet history
-                chat.tweetHistory.pop();
-            };
-            $scope.$apply();
-        });
-        // send a track event so the twitter stream on the server knows what to track
-        chat.track = function (event) {
-            if (chat.trackKey) {
-                console.log("twit", chat.trackKey);
-                socket.emit('track', chat.trackKey);
-            }
-        };        
-        // send an untrack event so the twitter stream on the server knows what to stop tracking
-        chat.untrack = function (event) {
-            if (chat.trackKey) {
-                console.log("untwit", chat.trackKey);
-                socket.emit('untrack', chat.trackKey);
-            }
-        };
+    //     socket.on("tweeter", function (data) {
+    //         console.log("adding tweet", data.text);
+    //         // add the new tweet to the top of the tweet history
+    //         chat.tweetHistory.unshift(data.text + '\n');
+    //         // only display a max of the 25 most recent tweets
+    //         if (chat.tweetHistory.length > 25) {
+    //             // remove the 26th tweet from the bottom of the tweet history
+    //             chat.tweetHistory.pop();
+    //         };
+    //         $scope.$apply();
+    //     });
+    //     // send a track event so the twitter stream on the server knows what to track
+    //     chat.track = function (event) {
+    //         if (chat.trackKey) {
+    //             console.log("twit", chat.trackKey);
+    //             socket.emit('track', chat.trackKey);
+    //         }
+    //     };
+    //     // send an untrack event so the twitter stream on the server knows what to stop tracking
+    //     chat.untrack = function (event) {
+    //         if (chat.trackKey) {
+    //             console.log("untwit", chat.trackKey);
+    //             socket.emit('untrack', chat.trackKey);
+    //         }
+    //     };
     }]);

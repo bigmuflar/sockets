@@ -1,13 +1,13 @@
 {
-  "name": "sockets-intro",
+  "name": "bigmuflar",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic socket protocol application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon"
   },
-  "author": "",
+  "author": "Justin Degonda",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -15,5 +15,18 @@
     "morgan": "^1.7.0",
     "node-tweet-stream": "^2.0.1",
     "socket.io": "^1.4.8"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigmuflar/sockets.git"
+  },
+  "keywords": [
+    "sockets",
+    "node.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/bigmuflar/sockets/issues"
+  },
+  "homepage": "https://github.com/bigmuflar/sockets#readme"
 }
